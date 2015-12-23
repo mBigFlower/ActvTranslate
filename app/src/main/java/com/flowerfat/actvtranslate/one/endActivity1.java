@@ -1,5 +1,7 @@
 package com.flowerfat.actvtranslate.one;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ public class endActivity1 extends AppCompatActivity {
 
     public static final String START_LOCATION = "start_location";
     public static final String IMAGE_RES = "image_res";
+
+    private int emptyPaddingTop = 0;
 
     private FrameLayout emptyView;
     private ImageView girlIv;
@@ -47,16 +51,18 @@ public class endActivity1 extends AppCompatActivity {
     private void setupRevealBackground(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             final int[] startingLocation = getIntent().getIntArrayExtra(START_LOCATION);
+            emptyPaddingTop = startingLocation[1];
             final int imageRes = getIntent().getIntExtra(IMAGE_RES, 0);
             girlIv.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                 @Override
                 public boolean onPreDraw() {
                     Log.i("onPreDraw", "onPreDraw");
                     girlIv.getViewTreeObserver().removeOnPreDrawListener(this);
-                    emptyView.setPadding(0, startingLocation[1], 0, 0);
+                    emptyView.setPadding(0, emptyPaddingTop, 0, 0);
                     girlIv.setImageResource(imageRes);
 
                     animIn();
+                    animIn2();
                     return true;
                 }
             });
@@ -64,12 +70,33 @@ public class endActivity1 extends AppCompatActivity {
     }
 
     private void animIn() {
-        contentTv.animate().alpha(1).setDuration(1000).start();
-        emptyView.animate().alpha(1).setDuration(1000).start();
+        contentTv.animate().alpha(1).setDuration(888).start();
+//        emptyView.animate().alpha(1).setDuration(666).start();
     }
 
+    public void animIn2() {
+        ObjectAnimator anim = ObjectAnimator//
+                .ofInt(emptyView, "emptyPaddingTop", emptyPaddingTop, 24)//
+                .setDuration(888);//
+        anim.start();
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int paddingTop = (int) animation.getAnimatedValue();
+                emptyView.setPadding(0, paddingTop, 0, 0);
+            }
+        });
+    }
 
-    public static void startFromLocation(int[] startingLocation,int imageRes, Activity startingActivity) {
+    public int getEmptyPaddingTop() {
+        return emptyPaddingTop;
+    }
+
+    public void setEmptyPaddingTop(int emptyPaddingTop) {
+        this.emptyPaddingTop = emptyPaddingTop;
+    }
+
+    public static void startFromLocation(int[] startingLocation, int imageRes, Activity startingActivity) {
         Intent intent = new Intent(startingActivity, endActivity1.class);
         intent.putExtra(START_LOCATION, startingLocation);
         intent.putExtra(IMAGE_RES, imageRes);

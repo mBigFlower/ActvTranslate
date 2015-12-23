@@ -22,9 +22,17 @@ public class startActivity1 extends AppCompatActivity {
 
     public void girlClick(View v){
         int[] startingLocation = new int[2];
+        int imageRes = R.mipmap.girl0;
+        if(v.getId() == R.id.start1_beautifulGirl1) {
+            imageRes = R.mipmap.girl1 ;
+        } else if(v.getId() == R.id.start1_beautifulGirl2) {
+            imageRes = R.mipmap.girl2 ;
+        } else if(v.getId() == R.id.start1_beautifulGirl3) {
+            imageRes = R.mipmap.girl3 ;
+        }
         startingLocation[0] = v.getLeft() ;
         startingLocation[1] = v.getTop() ;
-        endActivity1.startFromLocation(startingLocation, this);
+        endActivity1.startFromLocation(startingLocation, imageRes, this);
         overridePendingTransition(0, 0);
     }
 

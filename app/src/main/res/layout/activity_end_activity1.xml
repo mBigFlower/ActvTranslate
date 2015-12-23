@@ -1,11 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/end1_rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
     tools:context="com.flowerfat.actvtranslate.one.endActivity1">
+
+    <FrameLayout
+        android:id="@+id/end1_emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:background="#ff0" />
 
     <ImageView
         android:id="@+id/end1_beautifulGirl"
@@ -20,7 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0"
-        android:textSize="18sp"
         android:background="#fff"
         android:text="将指定工作区点的位置计算成屏幕坐标。
 
@@ -38,6 +42,7 @@ p
 要转换的工作区坐标 Point。
 
 返回值
-一个 Point，它表示转换后的 Point、p（以屏幕坐标表示）。"/>
+一个 Point，它表示转换后的 Point、p（以屏幕坐标表示）。"
+        android:textSize="18sp" />
 
 </LinearLayout>

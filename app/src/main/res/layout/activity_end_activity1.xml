@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/end1_rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context="com.flowerfat.actvtranslate.one.endActivity1">
+
+    <ImageView
+        android:id="@+id/end1_beautifulGirl"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/end1_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:textSize="18sp"
+        android:background="#fff"
+        android:text="将指定工作区点的位置计算成屏幕坐标。
+
+命名空间:System.Windows.Forms
+程序集:System.Windows.Forms（在 system.windows.forms.dll 中）
+
+语法
+
+public Point PointToScreen (
+Point p
+)
+
+参数
+p
+要转换的工作区坐标 Point。
+
+返回值
+一个 Point，它表示转换后的 Point、p（以屏幕坐标表示）。"/>
+
+</LinearLayout>

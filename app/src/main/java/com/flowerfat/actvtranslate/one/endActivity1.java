@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,8 @@ public class endActivity1 extends AppCompatActivity {
 
     public static final String START_LOCATION = "start_location";
     public static final String IMAGE_RES = "image_res";
+    // Âä†ÈÄüÂáèÈÄüÊèíÂÄºÂô®
+    private AccelerateDecelerateInterpolator INTERPOLATOR_ONE = new AccelerateDecelerateInterpolator();
 
     private int emptyPaddingTop = 0;
 
@@ -44,7 +47,7 @@ public class endActivity1 extends AppCompatActivity {
     }
 
     /**
-     * ±‰ªØµƒ‘≤µƒ∂Øª≠øÿ÷∆
+     * ÔøΩ‰ªØÔøΩÔøΩ‘≤ÔøΩƒ∂ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
      *
      * @param savedInstanceState
      */
@@ -59,6 +62,7 @@ public class endActivity1 extends AppCompatActivity {
                     Log.i("onPreDraw", "onPreDraw");
                     girlIv.getViewTreeObserver().removeOnPreDrawListener(this);
                     emptyView.setPadding(0, emptyPaddingTop, 0, 0);
+                    contentTv.setPadding(0, emptyPaddingTop, 0, 0);
                     girlIv.setImageResource(imageRes);
 
                     animIn();
@@ -70,20 +74,22 @@ public class endActivity1 extends AppCompatActivity {
     }
 
     private void animIn() {
-        contentTv.animate().alpha(1).setDuration(888).start();
-//        emptyView.animate().alpha(1).setDuration(666).start();
+        contentTv.animate().alpha(1).setDuration(500).start();
+        emptyView.animate().alpha(1).setDuration(500).start();
     }
 
     public void animIn2() {
         ObjectAnimator anim = ObjectAnimator//
-                .ofInt(emptyView, "emptyPaddingTop", emptyPaddingTop, 24)//
+                .ofInt(emptyView, "emptyPaddingTop", emptyPaddingTop, 36)//
                 .setDuration(888);//
+        anim.setInterpolator(INTERPOLATOR_ONE);
         anim.start();
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int paddingTop = (int) animation.getAnimatedValue();
                 emptyView.setPadding(0, paddingTop, 0, 0);
+                contentTv.setPadding(0, paddingTop, 0, 0);
             }
         });
     }

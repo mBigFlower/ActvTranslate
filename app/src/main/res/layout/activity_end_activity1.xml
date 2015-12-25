@@ -26,23 +26,13 @@
         android:layout_height="match_parent"
         android:alpha="0"
         android:background="#fff"
-        android:text="将指定工作区点的位置计算成屏幕坐标。
-
-命名空间:System.Windows.Forms
-程序集:System.Windows.Forms（在 system.windows.forms.dll 中）
-
-语法
-
-public Point PointToScreen (
-Point p
-)
-
-参数
-p
-要转换的工作区坐标 Point。
-
-返回值
-一个 Point，它表示转换后的 Point、p（以屏幕坐标表示）。"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:text="两个饺子结婚了，送走客人后新郎回到卧室，竟发现床上躺着一个肉丸子！新郎大惊，忙问新娘在哪？肉丸子害羞的说：讨厌，人家脱了衣服你就不认识啦！\n\n
+        男：昆？\n
+        女：帘。\n
+        男：哦？\n
+        女：否。"
         android:textSize="18sp" />
 
 </LinearLayout>

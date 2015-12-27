@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.flowerfat.actvtranslate.activity.one.startActivity1">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

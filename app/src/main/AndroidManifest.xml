@@ -17,13 +17,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".one.startActivity1"
-            android:label="@string/title_activity_start_activity1" >
-        </activity>
-        <activity
-            android:name=".one.endActivity1"
-            android:theme="@style/AppTheme.TransparentActivity"
-            android:label="@string/title_activity_end_activity1" >
+            android:name=".activity.GoActivity"
+            android:label="@string/title_activity_go"
+            android:theme="@style/AppTheme.TransparentActivity">
         </activity>
     </application>
 

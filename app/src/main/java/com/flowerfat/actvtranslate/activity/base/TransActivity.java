@@ -30,8 +30,8 @@ public abstract class TransActivity extends AppCompatActivity {
     public static final String IMAGE_RES = "image_res";
     public static final int TIME_ANIM = 888;
     public static String TAG;
-
-    private View userLayout;
+    // 自定义的目标界面布局   共用元素的布局
+    private View userLayout, sameLayout;
     public ImageView animIv;
 
 
@@ -50,19 +50,31 @@ public abstract class TransActivity extends AppCompatActivity {
         setupRevealBackground(savedInstanceState);
     }
 
-    public abstract int setLayoutId();
+    public abstract int initUserLayoutId();
+    public abstract int initSameLayoutId();
 
     public abstract void initData();
 
     private void init() {
-
-        animIv = (ImageView) findViewById(R.id.trans_img);
-
-        ViewStub viewStub = (ViewStub) findViewById(R.id.trans_userLayout);
-        viewStub.setLayoutResource(setLayoutId());
-        userLayout = viewStub.inflate();
+        // init the layout
+        int sameLayoutRes = initSameLayoutId();
+        int userLayoutRes = initUserLayoutId();
+        if(sameLayoutRes == 0)
+            throw new NullPointerException("You should add your same layout in initUserLayoutId");
+        if(userLayoutRes == 0)
+            throw new NullPointerException("You should add your aim layout in initUserLayoutId");
+        // get the same layout and the widget
+        ViewStub sameVs = (ViewStub) findViewById(R.id.trans_sameLayout);
+        sameVs.setLayoutResource(sameLayoutRes);
+        sameLayout = sameVs.inflate();
+        animIv = (ImageView) sameLayout.findViewById(R.id.trans_img);
+        // get the user layout
+        ViewStub userVs = (ViewStub) findViewById(R.id.trans_userLayout);
+        userVs.setLayoutResource(userLayoutRes);
+        userLayout = userVs.inflate();
         userView(userLayout);
     }
+
 
 
     private void setupRevealBackground(Bundle savedInstanceState) {

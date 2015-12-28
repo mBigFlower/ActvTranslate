@@ -1,13 +1,12 @@
-package com.flowerfat.actvtranslate;
+package com.flowerfat.actvtranslate.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.flowerfat.actvtranslate.activity.GoActivity;
+import com.flowerfat.actvtranslate.R;
 import com.flowerfat.actvtranslate.entity.ElementInfo;
 import com.google.gson.Gson;
 
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.i("MainActivity", "onCreate");
         init();
     }
 
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         startingLocation[1] = v.getTop() ;
         Log.i("startingLocation 1", startingLocation[0] + "   " + startingLocation[1]);
         ElementInfo info = new ElementInfo(v.getLeft(), v.getTop());
-        GoActivity.startFromLocation(new Gson().toJson(info), imageRes, this, GoActivity.class);
+        DemoActivity1.startFromLocation(new Gson().toJson(info), imageRes, this, DemoActivity1.class);
         overridePendingTransition(0, 0);
 
 

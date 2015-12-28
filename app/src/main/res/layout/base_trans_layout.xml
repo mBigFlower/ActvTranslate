@@ -12,17 +12,11 @@
 
     </ViewStub>
 
-    <android.support.design.widget.CollapsingToolbarLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ViewStub
+        android:id="@+id/trans_sameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        app:expandedTitleMarginEnd="64dp"
-        app:expandedTitleMarginStart="48dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/trans_img"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop" />
-    </android.support.design.widget.CollapsingToolbarLayout>
+
+    </ViewStub>
 </FrameLayout>

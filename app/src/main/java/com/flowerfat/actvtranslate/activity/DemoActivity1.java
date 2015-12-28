@@ -8,11 +8,16 @@ import android.widget.ImageView;
 import com.flowerfat.actvtranslate.R;
 import com.flowerfat.actvtranslate.activity.base.TransActivity;
 
-public class GoActivity extends TransActivity {
+public class DemoActivity1 extends TransActivity {
 
     @Override
-    public int setLayoutId() {
-        return R.layout.activity_go;
+    public int initUserLayoutId() {
+        return R.layout.activity_demo1;
+    }
+
+    @Override
+    public int initSameLayoutId() {
+        return R.layout.layoutsame_demo1;
     }
 
     @Override
